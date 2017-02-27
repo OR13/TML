@@ -4,8 +4,10 @@
   "description": "lol",
   "main": "index.js",
   "scripts": {
+    "ramble": "python src/lstm_text_generation.py",
+    "dream": "python src/deep_dream.py",
     "convert-mbox": "node src/gmail/convert_mbox_to_plaintext.js",
-    "gen": "python src/lstm_text_generation.py",
+    "clean": "rm -rf results_data/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

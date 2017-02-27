@@ -1,12 +1,17 @@
-# TML 
+# Toy ML with Keras, Tensorflow and Node 
 
 health care is a team effort. shared in a weds and stafentel with four carabllerenger cents, by tige is relicerany you wota ee3erscente. ehrodit hource heact as net enecring neskints a sestend faruice on their sction, himpoy your apps
-
  
-## Generate Random Text From Training Data
+## Text Generation
 
 ```
-npm run gen -- training_data/dataset.txt 
+npm run ramble -- training_data/dataset.txt 
+```
+
+## Deep Dream
+
+```
+npm run dream -- ./training_data/dataset.jpg ./results_data/
 ```
 
 ## Training from Gmails...

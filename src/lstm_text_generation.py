@@ -80,6 +80,7 @@ for iteration in range(1, 60):
     print()
     print('-' * 50)
     print('Iteration', iteration)
+    print()
     model.fit(X, y, batch_size=128, nb_epoch=1)
 
     start_index = random.randint(0, len(text) - maxlen - 1)
@@ -92,6 +93,7 @@ for iteration in range(1, 60):
         sentence = text[start_index: start_index + maxlen]
         generated += sentence
         print('----- Generating with seed: "' + sentence + '"')
+        print()
         sys.stdout.write(generated)
 
         for i in range(400):
