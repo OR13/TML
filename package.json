@@ -1,0 +1,27 @@
+{
+  "name": "tml",
+  "version": "1.0.0",
+  "description": "lol",
+  "main": "index.js",
+  "scripts": {
+    "convert-mbox": "node src/gmail/convert_mbox_to_plaintext.js",
+    "gen": "python src/lstm_text_generation.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OR13/TML.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OR13/TML/issues"
+  },
+  "homepage": "https://github.com/OR13/TML#readme",
+  "dependencies": {
+    "mailparser": "^2.0.2",
+    "minimist": "^1.2.0",
+    "node-mbox": "^0.4.0",
+    "sanitize-html": "^1.14.1"
+  }
+}
