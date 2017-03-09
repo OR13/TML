@@ -198,7 +198,7 @@ evaluator = Evaluator()
 # run scipy-based optimization (L-BFGS) over the pixels of the generated image
 # so as to minimize the loss
 x = preprocess_image(base_image_path)
-for i in range(5):
+for i in range(10):
     print('Start of iteration', i)
     start_time = time.time()
 

@@ -5,13 +5,13 @@ health care is a team effort. shared in a weds and stafentel with four carabller
 ## Text Generation
 
 ```
-npm run ramble -- training_data/dataset.txt 
+npm run ramble -- ./training_data/dataset.txt 
 ```
 
 ## Deep Dream
 
 ```
-npm run dream -- ./training_data/dataset.jpg ./results_data/
+npm run dream -- ./training_data/dataset.jpg ./results_data/dream
 ```
 
 ## Training from Gmails...

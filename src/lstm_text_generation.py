@@ -14,7 +14,8 @@ has at least ~100k characters. ~1M is better.
 '''
 
 from __future__ import print_function
-from keras.models import Sequential
+from keras.models import Sequential,  load_model
+
 from keras.layers import Dense, Activation
 from keras.layers import LSTM
 from keras.optimizers import RMSprop
@@ -23,7 +24,7 @@ import numpy as np
 import random
 import sys
 
-if sys.argv:
+if len(sys.argv) > 1:
     path = sys.argv[1]
 else:
     path = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
@@ -55,16 +56,21 @@ for i, sentence in enumerate(sentences):
     y[i, char_indices[next_chars[i]]] = 1
 
 
-# build the model: a single LSTM
-print('Build model...')
-model = Sequential()
-model.add(LSTM(128, input_shape=(maxlen, len(chars))))
-model.add(Dense(len(chars)))
-model.add(Activation('softmax'))
+# https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model
+try:
+    print('Loading a model file...')
+    model = load_model('lstm_model.h5')
+except:
+    print('Error: No model file found...')
+    # build the model: a single LSTM
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(128, input_shape=(maxlen, len(chars))))
+    model.add(Dense(len(chars)))
+    model.add(Activation('softmax'))
 
-optimizer = RMSprop(lr=0.01)
-model.compile(loss='categorical_crossentropy', optimizer=optimizer)
-
+    optimizer = RMSprop(lr=0.01)
+    model.compile(loss='categorical_crossentropy', optimizer=optimizer)
 
 def sample(preds, temperature=1.0):
     # helper function to sample an index from a probability array
@@ -82,6 +88,8 @@ for iteration in range(1, 60):
     print('Iteration', iteration)
     print()
     model.fit(X, y, batch_size=128, nb_epoch=1)
+
+    model.save('lstm_model.h5') 
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 
